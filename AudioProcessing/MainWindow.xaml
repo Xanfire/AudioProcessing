@@ -1,0 +1,107 @@
+﻿<Window x:Class="AudioProcessing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioProcessing"
+        mc:Ignorable="d"
+        Title="AudioProcessing" Height="600" Width="1350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid Margin="0,0,0,521" HorizontalAlignment="Left" Width="794">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnHearing" Grid.Column="0" Content="Start Hearing" Click="btnHearing_Click" Width="200" FontSize="20"/>
+            <Button x:Name="btnEffect" Grid.Column="1" Width="200" Content="Effect Off" FontSize="20" IsEnabled="False" Click="btnEffect_Click"></Button>
+        </Grid>
+        <Grid Margin="0,50,0,-4" HorizontalAlignment="Left" Width="794">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="Black" BorderThickness="2">
+                <local:WaveformViwer x:Name="waveformViwer"></local:WaveformViwer>
+            </Border>
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+                <local:SpectrumViwer x:Name="spectrumAnalyserView"></local:SpectrumViwer>
+            </Border>
+        </Grid>
+        <Grid Margin="799,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Minimum="-100" Maximum="100" SmallChange="1" AutoToolTipPrecision="1" AutoToolTipPlacement="TopLeft" IsSnapToTickEnabled="True" TickPlacement="BottomRight"/>
+                <TextBlock Grid.Row="1" Text="Cens" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider2" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" SmallChange="1" Value="0" Minimum="-12" Maximum="12" TickPlacement="BottomRight" IsSnapToTickEnabled="True" AutoToolTipPlacement="TopLeft"></Slider>
+                <TextBlock Text="Semitones" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider3" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" SmallChange="1" Minimum="-8" Maximum="8" IsSnapToTickEnabled="True" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight"></Slider>
+                <TextBlock Text="Octaves" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider4" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Value="50" Minimum="1" Maximum="200" SmallChange="1" AutoToolTipPlacement="TopLeft" IsSnapToTickEnabled="True" TickPlacement="BottomRight"></Slider>
+                <TextBlock Text="Window Size" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider5" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Value="20" Maximum="50" SmallChange="0.5" Minimum="0.5" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight" LargeChange="0.5" AutoToolTipPrecision="1" IsSnapToTickEnabled="True" TickFrequency="0.5"/>
+                <TextBlock Text="Overlap Size" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider6" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Minimum="-120" Maximum="6" SmallChange="1" IsSnapToTickEnabled="True" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight"></Slider>
+                <TextBlock Text="Wet Mix" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider7" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Minimum="-120" Maximum="6" SmallChange="1" Value="-120" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight" IsSnapToTickEnabled="True"></Slider>
+                <TextBlock Text="Dry Mix" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Slider x:Name="slider8" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" SmallChange="1" Maximum="1" Value="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft"></Slider>
+                <TextBlock Text="Filter" Grid.Row="1" FontSize="14" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
